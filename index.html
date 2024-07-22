@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intense Flashbang Simulation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            overflow: hidden;
+            text-align: center;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        #flash {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            display: none; /* Le flash est masqué par défaut */
+            z-index: 9999;
+        }
+        #trigger {
+            margin-top: 20%;
+            padding: 10px 20px;
+            font-size: 24px;
+            font-weight: bold;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            z-index: 10001;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div id="flash"></div>
+    <audio id="bang" src="flashbanggg.mp3" preload="auto"></audio>
+    <button id="trigger">Lives are cheap, flashbangs are cheaper. Bang and clear</button>
+    <script>
+        function simulateFlashbang() {
+            const flash = document.getElementById('flash');
+            const bang = document.getElementById('bang');
+            const trigger = document.getElementById('trigger');
+
+            // Masquer le bouton après le clic
+            trigger.style.display = 'none';
+
+            // Afficher le flash blanc
+            flash.style.display = 'block';
+
+            // Jouer le son
+            bang.muted = false;
+            bang.play().catch(error => {
+                console.error('Erreur lors de la lecture du son:', error);
+            });
+
+            // Nous n'utilisons plus setTimeout pour masquer le flash
+        }
+
+        document.getElementById('trigger').addEventListener('click', simulateFlashbang);
+    </script>
+</body>
+</html>
